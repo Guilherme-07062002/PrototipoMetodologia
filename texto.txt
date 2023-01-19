@@ -1,0 +1,56 @@
+Vermelho: 
+Verde: 
+Azul: 
+Laranja: 
+Roxo: 
+Amarelo: 
+Rosa: 
+Preto:
+
+
+} else if (prediction[1].probability > 0.90) {
+                            alert(prediction[i].className)
+                            /* alert('Verde') */
+                        } else if (prediction[2].probability > 0.90) {
+                            alert(prediction[i].className)
+                            /* alert('Azul') */
+                        } else if (prediction[3].probability > 0.90) {
+                            alert(prediction[i].className)
+                            /* alert('Laranja') */
+                        } else if (prediction[4].probability > 0.90) {
+                            alert(prediction[i].className)
+                            /* alert('Roxo') */
+                        } else if (prediction[5].probability > 0.90) {
+                            alert(prediction[i].className)
+                            /* alert('Amarelo') */
+                        } else if (prediction[6].probability > 0.90) {
+                            alert(prediction[i].className)
+                            /* alert('Rosa') */
+                        } else if (prediction[7].probability > 0.90) {
+                            alert(prediction[i].className)
+                            /* alert('Preto') */
+                        }
+
+
+
+
+.c1 {
+    /* background-color: #791212; */
+}
+
+.c2 {
+   /*  background-color: #B50C0C; */
+}
+
+.c3 {
+    /* background-color: #EC3737; */
+}
+
+.c4 {
+    /* background-color: #85586F; */
+}
+
+.c5 {
+   /*  background-color: #FFADAD; */
+} 
+

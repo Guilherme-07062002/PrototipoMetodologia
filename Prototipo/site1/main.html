@@ -22,7 +22,7 @@
         <!-- <h1 class="nome">GERADOR</h1> -->
         <div class="holder2">
             <div id="webcam">
-                <button id="start" type="button" onclick="init()">Start</button>
+               <!--  <button id="start" type="button" >Start</button> -->
                 <div id="cam">
                     <div id="webcam-container"></div>
                 </div>
@@ -40,9 +40,9 @@
 
         </div>
         <div class="buttons">
-            <button class="download"><img src="/Prototipo/modafiles/dwld.svg" alt="download"></button>
-            <button class="camera"><img src="/Prototipo/modafiles/cmr.svg" alt="camera"></button>
-            <button class="close"><img src="/Prototipo/modafiles/close.svg" alt="close"></button>
+            <button onclick="printScreen()" class="download"><img src="/Prototipo/modafiles/dwld.svg" alt="download"></button>
+            <button onclick="init()" class="camera"><img src="/Prototipo/modafiles/cmr.svg" alt="camera"></button>
+            <button onclick="stop()" class="close"><img src="/Prototipo/modafiles/close.svg" alt="close"></button>
         </div>
     </div>
 
@@ -50,6 +50,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
     <script type="text/javascript">
+        function stop(){
+            location.reload()
+        }
+        function printScreen() {
+        window.print('')
+        }
         // More API functions here:
         // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
@@ -97,8 +103,8 @@
             const prediction = await model.predict(webcam.canvas);
             let color1, color2, color3, color4, color5 = 0
             for (let i = 0; i < maxPredictions; i++) {
-                const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-                labelContainer.childNodes[i].innerHTML = classPrediction;
+                /*  const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                 labelContainer.childNodes[i].innerHTML = classPrediction; */
                 /* Vermelho: */
                 /* Verde: 
                 Azul: 
@@ -108,25 +114,25 @@
                 Rosa: 
                 Preto: 
                  */
-                /*  if (prediction[i].probability.toFixed(2) > 0.90) {
-                     console.log(prediction[i].className)
-                     
-                     /* alert('Vermelho') */
-                // } 
-
-                if (prediction[2].probability.toFixed(2) > 0.90) {
+                if (prediction[i].probability.toFixed(2) > 0.90) {
                     console.log(prediction[i].className)
-                    color1 = '#31169E' 
-                    color2 = '#EB7B21' 
-                    color3 = '#3609EB' 
-                    color4 = '#21EB25'
-                    color5 = '#0E9E11'
-                    document.getElementById('c1').style.backgroundColor = color1
-                    document.getElementById('c2').style.backgroundColor = color2
-                    document.getElementById('c3').style.backgroundColor = color3
-                    document.getElementById('c4').style.backgroundColor = color4
-                    document.getElementById('c5').style.backgroundColor = color5
+
+                    /* alert('Vermelho') */
                 }
+
+                /* if (prediction[2].probability.toFixed(2) > 0.90) {
+                    console.log(prediction[i].className) */
+                /* color1 = '#31169E' 
+                color2 = '#EB7B21' 
+                color3 = '#3609EB' 
+                color4 = '#21EB25'
+                color5 = '#0E9E11'
+                document.getElementById('c1').style.backgroundColor = color1
+                document.getElementById('c2').style.backgroundColor = color2
+                document.getElementById('c3').style.backgroundColor = color3
+                document.getElementById('c4').style.backgroundColor = color4
+                document.getElementById('c5').style.backgroundColor = color5 */
+                // }
 
                 /*  alert('Vermelho') */
             }
