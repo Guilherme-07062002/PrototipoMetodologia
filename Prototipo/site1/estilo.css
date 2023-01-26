@@ -9,7 +9,7 @@
 
 @font-face {
     font-family: Inter;
-    src: url(/DW/fonts/Inter-Bold.ttf);
+    src: url(/Prototipo/fonts/Inter.ttf);
 }
 
 body {
@@ -28,7 +28,7 @@ footer {
     position: absolute;
     bottom: 0px;
     background-color: #85586F;
-    height: 5vh;
+    height: 3vh;
     width: 100vw;
 
 }
@@ -36,6 +36,10 @@ footer {
 .title {
     margin: 20px 10px;
     margin-left: 5vw;
+}
+
+.title h1 {
+    margin-bottom: 10px;
 }
 
 .holder {
@@ -53,14 +57,26 @@ footer {
     background-color: #D9D9D9;
     width: 40vw;
     height: 60vh;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .holder3 {
     background-color: rgba(58, 0, 34, 0.719);
-    height: 20vh;
-    width: 35vw;
+    height: 18vh;
+    width: 40vw;
     display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    justify-content: center;
+    background-image: url('');
+    background-size: contain;
+}
+
+.holder3>p {
+    color: white;
+    display: none;
 }
 
 button {
@@ -87,31 +103,4 @@ button:hover {
     position: absolute;
     left: 50rem;
     top: 10rem;
-}
-
-.c {
-    height: 100px;
-    width: 100px;
-}
-
-
-
-.c1 {
-    background-color: #791212;
-}
-
-.c2 {
-    background-color: #B50C0C;
-}
-
-.c3 {
-    background-color: #EC3737;
-}
-
-.c4 {
-    background-color: #85586F;
-}
-
-.c5 {
-    background-color: #FFADAD;
 }
