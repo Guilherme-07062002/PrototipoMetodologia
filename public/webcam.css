@@ -1,0 +1,8 @@
+button#start {
+  margin: 0;
+}
+#cam {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Recognition</title>
+    <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="public/estilo.css" />
+    <link rel="stylesheet" href="public/webcam.css" />
+  </head>
+
+  <body>
+    <div class="title">
+      <h1 class="moda">RECONHECIMENTO DE CORES</h1>
+      <p class="text">
+        Se posicione em frente a camera e iremos exibir uma paleta de cores que
+        combina com o que você está usando.
+      </p>
+    </div>
+    <div class="holder">
+      <div class="holder2">
+        <div id="webcam">
+          <div id="cam">
+            <div id="webcam-container"></div>
+          </div>
+          <div id="label-container"></div>
+        </div>
+      </div>
+      <div class="holder3">
+        <div id="c1" class="c c1"></div>
+        <div class="c c2"></div>
+        <div class="c c3"></div>
+        <div class="c c4"></div>
+        <div class="c c5"></div>
+      </div>
+      <div class="buttons">
+        <button onclick="printScreen()" class="download">
+          <img src="/public/img/dwld.svg" alt="download" />
+        </button>
+        <button onclick="init()" class="camera">
+          <img src="/public/img/cmr.svg" alt="camera" />
+        </button>
+        <button onclick="stop()" class="close">
+          <img src="/public/img/close.svg" alt="close" />
+        </button>
+      </div>
+    </div>
+
+    <footer></footer>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+      function stop() {
+        location.reload();
+      }
+      function printScreen() {
+        window.print("");
+      }
+
+      const URL = "/my_model/";
+
+      let model, webcam, labelContainer, maxPredictions;
+
+      async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        const flip = true;
+        webcam = new tmImage.Webcam(380, 380, flip);
+        await webcam.setup();
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < maxPredictions; i++) {
+          labelContainer.appendChild(document.createElement("div"));
+        }
+      }
+      async function loop() {
+        webcam.update();
+        await predict();
+        window.requestAnimationFrame(loop);
+      }
+      async function predict() {
+        const prediction = await model.predict(webcam.canvas);
+        let color1,
+          color2,
+          color3,
+          color4,
+          color5 = 0;
+        for (let i = 0; i < maxPredictions; i++) {
+          if (prediction[i].probability.toFixed(2) > 0.9) {
+            console.log(prediction[i].className);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
